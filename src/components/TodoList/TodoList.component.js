@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { updateTodo, deleteTodo };
 
-const TodoList = ({ activeTasks, completeTasks, ...props }) => {
+export const TodoListComponent = ({ activeTasks, completeTasks, ...props }) => {
   const [showCompleted, setShowCompleted] = useState(false);
 
   return (
@@ -43,4 +43,4 @@ function renderTodos(todos, props) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TodoList);
+)(TodoListComponent);

@@ -9,7 +9,7 @@ import * as styles from './AddTodo.styles';
 
 const mapDispatchToProps = { createTodo };
 
-const AddTodo = props => {
+export const AddTodoComponent = props => {
   const [todoText, setTodoText] = useState(props.initialValue || '');
 
   const addTodo = () => {
@@ -51,4 +51,4 @@ const AddTodo = props => {
 export default connect(
   null,
   mapDispatchToProps
-)(AddTodo);
+)(AddTodoComponent);

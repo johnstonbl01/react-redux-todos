@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as styles from './TextInput.styles';
 
 const TextInput = ({
@@ -9,16 +9,6 @@ const TextInput = ({
   variant = 'outline',
   ...props
 }) => {
-  const [pristine, setPristine] = useState(true);
-
-  const onChange = event => {
-    if (pristine && value.length > 0) {
-      setPristine(false);
-    }
-
-    return onTextChange(event);
-  };
-
   const outlineStyle = variant === 'outline' && styles.outline;
 
   return (
@@ -27,7 +17,7 @@ const TextInput = ({
         css={[styles.input, outlineStyle, inputStyle]}
         type="text"
         value={value}
-        onChange={onChange}
+        onChange={onTextChange}
         onKeyDown={onKeyDown}
         {...props}
       />

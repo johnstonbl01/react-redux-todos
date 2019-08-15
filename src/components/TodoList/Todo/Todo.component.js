@@ -53,42 +53,22 @@ const Todo = ({ id, text, completed, updateTodo, deleteTodo }) => {
   const [todoText, setTodoText] = useState(text);
   const [editMode, setEditMode] = useState(false);
 
-  const saveTask = () => {
-    updateTodo({ id, text: todoText });
-    return setEditMode(false);
-  };
+  const onTaskSave = evt => {
+    const updateValue = validateInput(todoText, text, evt);
 
-  const onFocus = () => {
-    if (editMode) {
-      return null;
-    }
-
-    return setEditMode(!editMode);
-  };
-
-  const onEnterKeyPress = evt => {
-    const isEnterKey = evt.key === 'Enter';
-    const isValidInput = todoText.length > 0;
-    const isSameInput = todoText === text;
-
-    if (!isEnterKey) {
+    if (!updateValue) {
       return null;
     }
 
     setEditMode(false);
     evt.target.blur();
 
-    if (isSameInput) {
+    if (todoText === text) {
       return null;
     }
 
-    if (!isValidInput) {
-      setTodoText(text);
-    }
-
-    setTodoText(evt.target.value);
-
-    return updateTodo({ id, text: todoText });
+    setTodoText(updateValue);
+    return updateTodo({ id, text: updateValue });
   };
 
   return (
@@ -106,9 +86,9 @@ const Todo = ({ id, text, completed, updateTodo, deleteTodo }) => {
           ]}
           value={todoText}
           onTextChange={evt => setTodoText(evt.target.value)}
-          onKeyDown={onEnterKeyPress}
+          onKeyDown={onTaskSave}
           variant="none"
-          onFocus={onFocus}
+          onFocus={() => setEditMode(!editMode)}
         />
         {!completed && (
           <IconButton
@@ -120,9 +100,24 @@ const Todo = ({ id, text, completed, updateTodo, deleteTodo }) => {
           />
         )}
       </div>
-      <UpdateTask enabled={editMode} onCancel={() => setEditMode(false)} onSave={saveTask} />
+      <UpdateTask enabled={editMode} onCancel={() => setEditMode(false)} onSave={onTaskSave} />
     </div>
   );
 };
+
+export function validateInput(inputValue, originalValue, event) {
+  const isEnterKey = event.key && event.key === 'Enter';
+  const isValidInput = inputValue.length > 0;
+
+  if (event.key && !isEnterKey) {
+    return null;
+  }
+
+  if (!isValidInput) {
+    return originalValue;
+  }
+
+  return inputValue;
+}
 
 export default Todo;

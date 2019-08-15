@@ -1,15 +1,15 @@
-import uuid from "uuid/v4";
-import { TODO_CREATE, TODO_UPDATE, TODO_DELETE } from "./actions";
+import uuid from 'uuid/v4';
+import { TODO_CREATE, TODO_UPDATE, TODO_DELETE } from './actions';
 
-const INITIAL_STATE = [
+export const INITIAL_STATE = [
   {
-    id: "0368eeb9-8526-4dc8-999c-e2fe165c4cf3",
-    text: "Cook dinner",
+    id: '0368eeb9-8526-4dc8-999c-e2fe165c4cf3',
+    text: 'Cook dinner',
     completed: false
   },
   {
-    id: "920b2acf-a328-43af-acbb-6dca2b97ee35",
-    text: "Take out trash",
+    id: '920b2acf-a328-43af-acbb-6dca2b97ee35',
+    text: 'Take out trash',
     completed: false
   }
 ];

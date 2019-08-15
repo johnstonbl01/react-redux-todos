@@ -3,14 +3,18 @@ import Icon from '../Icon/Icon.component';
 import colors from '../../theme/colors';
 import * as styles from './IconButton.styles';
 
-const ButtonText = ({ text, isHovered, hoverColor = colors.secondary }) => {
+export const ButtonText = ({ text, isHovered, hoverColor = colors.secondary }) => {
   if (!text) {
     return null;
   }
 
   const hoverStyles = { color: hoverColor, cursor: 'pointer', textDecoration: 'underline' };
 
-  return <p css={[styles.text, isHovered && hoverStyles]}>{text}</p>;
+  return (
+    <p data-testid="icon-button-text" css={[styles.text, isHovered && hoverStyles]}>
+      {text}
+    </p>
+  );
 };
 
 const IconButton = ({ onClick, width, viewBox, hoverIcon, ...props }) => {
