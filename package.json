@@ -3,17 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "lint": "eslint src",
-    "test": "node scripts/test.js"
+    "start": "node scripts/start.js",
+    "test": "node scripts/test.js",
+    "test:coverage": "npm run test -- --coverage"
   },
   "dependencies": {
     "@babel/core": "7.4.3",
     "@emotion/core": "^10.0.15",
     "@svgr/webpack": "4.1.0",
-    "@typescript-eslint/eslint-plugin": "1.6.0",
-    "@typescript-eslint/parser": "1.6.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "8.0.5",
@@ -48,10 +47,10 @@
     "postcss-normalize": "7.0.1",
     "postcss-preset-env": "6.6.0",
     "postcss-safe-parser": "4.0.1",
-    "react": "^16.8.6",
+    "react": "^16.9.0",
     "react-app-polyfill": "^1.0.1",
     "react-dev-utils": "^9.0.1",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.9.0",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
     "resolve": "1.10.0",
@@ -60,6 +59,7 @@
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "1.2.3",
     "ts-pnp": "1.1.2",
+    "uninstall": "0.0.0",
     "url-loader": "1.1.2",
     "uuid": "^3.3.2",
     "webpack": "4.29.6",
@@ -82,7 +82,9 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.d.ts"
+      "!src/**/*.d.ts",
+      "!src/utils/test.utils.js",
+      "!src/index.js"
     ],
     "setupFiles": [
       "react-app-polyfill/jsdom"
@@ -126,7 +128,10 @@
   },
   "devDependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.14",
+    "@testing-library/jest-dom": "^4.0.0",
+    "@testing-library/react": "^9.1.1",
     "eslint": "^6.1.0",
-    "eslint-plugin-react": "^7.14.3"
+    "eslint-plugin-react": "^7.14.3",
+    "jest-dom": "^4.0.0"
   }
 }
