@@ -3,7 +3,12 @@ import Icon from '../Icon/Icon.component';
 import colors from '../../theme/colors';
 import * as styles from './IconButton.styles';
 
-export const ButtonText = ({ text, isHovered, hoverColor = colors.secondary }) => {
+export const ButtonText = ({
+  text,
+  isHovered,
+  color = colors.black,
+  hoverColor = colors.secondary
+}) => {
   if (!text) {
     return null;
   }
@@ -11,7 +16,7 @@ export const ButtonText = ({ text, isHovered, hoverColor = colors.secondary }) =
   const hoverStyles = { color: hoverColor, cursor: 'pointer', textDecoration: 'underline' };
 
   return (
-    <p data-testid="icon-button-text" css={[styles.text, isHovered && hoverStyles]}>
+    <p data-testid="icon-button-text" css={[styles.text, { color }, isHovered && hoverStyles]}>
       {text}
     </p>
   );
@@ -25,13 +30,19 @@ const IconButton = ({ onClick, width, viewBox, hoverIcon, ...props }) => {
 
   return (
     <button
+      aria-label={props.text || props.label}
       css={[styles.button, props.style]}
       onClick={onClick}
       disabled={props.disabled}
       onMouseEnter={() => !props.disabled && setIsHovered(true)}
       onMouseLeave={() => !props.disabled && setIsHovered(false)}
     >
-      <ButtonText text={props.text} hovercolor={props.hoverColor} isHovered={isHovered} />
+      <ButtonText
+        text={props.text}
+        hovercolor={props.hoverColor}
+        isHovered={isHovered}
+        color={iconColor}
+      />
       <Icon width={width} color={iconColor} icon={icon} viewBox={viewBox} />
     </button>
   );

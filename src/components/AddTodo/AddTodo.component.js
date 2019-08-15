@@ -27,15 +27,19 @@ export const AddTodoComponent = props => {
 
   return (
     <Fragment>
-      <label css={styles.label}>New task:</label>
+      <label htmlFor="todo" css={styles.label}>
+        New task:
+      </label>
       <div css={styles.addTodo}>
         <TextInput
+          name="todo"
           value={todoText}
           inputStyle={styles.input}
           onTextChange={evt => setTodoText(evt.target.value)}
           onKeyDown={onEnterKeyPress}
         />
         <IconButton
+          label="create-todo"
           disabled={todoText.length < 1}
           icon={icons.plus}
           color={colors.secondary}

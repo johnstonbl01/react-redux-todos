@@ -1,5 +1,5 @@
 import { css } from '@emotion/core';
-import colors from '../../theme/colors';
+// import colors from '../../theme/colors';
 
 export const button = css({
   padding: 0,
@@ -13,7 +13,6 @@ export const button = css({
 
 export const text = css({
   marginRight: '0.5rem',
-  color: colors.gray,
   fontSize: '0.875rem',
   fontFamily: 'Rubik',
   margin: '2px 0.5rem 0 0'

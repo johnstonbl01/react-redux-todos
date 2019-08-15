@@ -23,7 +23,7 @@ export const TodoListComponent = ({ activeTasks, completeTasks, ...props }) => {
       <IconButton
         style={styles.showCompletedButton}
         icon={icons.checkCircleOutline}
-        color={colors.gray}
+        color={colors.darkGray}
         viewBox="0 0 512 512"
         text={`${showCompleted ? 'Hide' : 'Show'} completed`}
         width="1.25rem"

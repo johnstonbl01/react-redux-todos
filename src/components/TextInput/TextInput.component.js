@@ -14,6 +14,7 @@ const TextInput = ({
   return (
     <div css={styles.layout}>
       <input
+        aria-label={props.name}
         css={[styles.input, outlineStyle, inputStyle]}
         type="text"
         value={value}

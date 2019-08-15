@@ -12,10 +12,10 @@ const UpdateTask = ({ enabled, onCancel, onSave }) => {
 
   return (
     <Fragment>
-      <button onClick={onSave} css={styles.saveButton}>
+      <button aria-label="save" onClick={onSave} css={styles.saveButton}>
         Save
       </button>
-      <button onClick={onCancel} css={styles.cancelButton}>
+      <button aria-label="cancel" onClick={onCancel} css={styles.cancelButton}>
         Cancel
       </button>
     </Fragment>
@@ -26,6 +26,7 @@ const CompleteTask = ({ completed, onComplete }) => {
   if (completed) {
     return (
       <IconButton
+        label="complete-todo"
         onClick={onComplete}
         style={styles.completeIcon}
         icon={icons.checkCircle}
@@ -38,6 +39,7 @@ const CompleteTask = ({ completed, onComplete }) => {
 
   return (
     <IconButton
+      label="complete-todo"
       onClick={onComplete}
       style={styles.completeIcon}
       viewBox="0 0 512 512"
@@ -84,6 +86,7 @@ const Todo = ({ id, text, completed, updateTodo, deleteTodo }) => {
             editMode && styles.editInput,
             completed && styles.completedFontColor
           ]}
+          name={`task-${id}`}
           value={todoText}
           onTextChange={evt => setTodoText(evt.target.value)}
           onKeyDown={onTaskSave}
@@ -92,6 +95,7 @@ const Todo = ({ id, text, completed, updateTodo, deleteTodo }) => {
         />
         {!completed && (
           <IconButton
+            label="delete-todo"
             style={styles.deleteIcon}
             onClick={() => deleteTodo(id)}
             icon={icons.trash}
