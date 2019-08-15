@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import Todo from './Todo/Todo.component';
 import IconButton from '../IconButton/IconButton.component';
 import { updateTodo, deleteTodo } from '../../state/todos/actions';
-import * as styles from './TodoList.styles';
+import { activeTasksSelector, completeTasksSelector } from '../../state/todos/selectors';
 import icons from '../../theme/icons';
 import colors from '../../theme/colors';
+import * as styles from './TodoList.styles';
 
 const mapStateToProps = state => ({
-  activeTasks: state.todos.filter(todo => !todo.completed),
-  completeTasks: state.todos.filter(todo => todo.completed)
+  activeTasks: activeTasksSelector(state),
+  completeTasks: completeTasksSelector(state)
 });
 
 const mapDispatchToProps = { updateTodo, deleteTodo };
