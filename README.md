@@ -1,6 +1,6 @@
 # React / Redux Todo App
 
-A simple todo list application using React & Redux. Design / UX heavily inspired by [Todoist](https://todoist.com/);
+A simple todo list application using React & Redux. Design / UX heavily inspired by [Todoist](https://todoist.com/) :heart:
 
 <img align="center" src="todo-app.gif" alt="gif of the todo app" />
 
